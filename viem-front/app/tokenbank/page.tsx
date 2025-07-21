@@ -121,26 +121,28 @@ export default function TokenBankPage() {
         publicClient.readContract({
           address: ERC20_TOKEN_ADDRESS,
           abi: TokenBankABI,
-          functionName: 'balanceOf',
+          functionName: 'balances',
           args: [address],
         }),
-        publicClient.readContract({
-          address: TOKEN_BANK_ADDRESS,
-          abi: TokenBankABI,
-          functionName: 'deposits',
-          args: [address],
-        }),
-        publicClient.readContract({
-          address: ERC20_TOKEN_ADDRESS,
-          abi: ERC20_ABI,
-          functionName: 'allowance',
-          args: [address, TOKEN_BANK_ADDRESS],
-        })
+        // publicClient.readContract({
+        //   address: TOKEN_BANK_ADDRESS,
+        //   abi: TokenBankABI,
+        //   functionName: 'deposit',
+        //   args: [address],
+        // }),
+        // publicClient.readContract({
+        //   address: ERC20_TOKEN_ADDRESS,
+        //   abi: ERC20_ABI,
+        //   functionName: 'allowance',
+        //   args: [address, TOKEN_BANK_ADDRESS],
+        // })
       ]);
-
+      console.log('tokenBal',tokenBal)
+      console.log('depositBal',depositBal)
+      console.log('allowanceAmount',allowanceAmount)
       setTokenBalance(tokenBal as bigint);
-      setDepositBalance(depositBal as bigint);
-      setAllowance(allowanceAmount as bigint);
+      // setDepositBalance(depositBal as bigint);
+      // setAllowance(allowanceAmount as bigint);
     } catch (error) {
       console.error('读取余额错误:', error);
       setError('读取余额失败');
@@ -160,7 +162,6 @@ export default function TokenBankPage() {
     try {
       setIsLoading(true);
       setError('');
-
       const hash = await walletClient.writeContract({
         account: address,
         address: ERC20_TOKEN_ADDRESS,
@@ -168,7 +169,7 @@ export default function TokenBankPage() {
         functionName: 'approve',
         args: [TOKEN_BANK_ADDRESS, parseEther(amount)],
       });
-
+console.log('hash',hash)
       await publicClient.waitForTransactionReceipt({ hash });
       await fetchBalances();
     } catch (error) {
@@ -271,14 +272,14 @@ export default function TokenBankPage() {
                 disabled={isLoading || !amount}
                 className="flex-1 bg-yellow-500 text-white p-2 rounded hover:bg-yellow-600 disabled:bg-gray-400"
               >
-                {isLoading ? '授权中...' : '授权'}
+                {isLoading ? '授权中...' : '授权111'}
               </button>
               <button
                 onClick={handleDeposit}
                 disabled={isLoading || !amount || parseEther(amount) > allowance}
                 className="flex-1 bg-blue-500 text-white p-2 rounded hover:bg-blue-600 disabled:bg-gray-400"
               >
-                {isLoading ? '存款中...' : '存款'}
+                {isLoading ? '存款中...' : '存款111'}
               </button>
               <button
                 onClick={handleWithdraw}

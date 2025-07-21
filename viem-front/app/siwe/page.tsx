@@ -115,7 +115,7 @@ export default function SiwePage() {
                         onClick={connectWallet}
                         className="w-full bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 transition-colors"
                     >
-                        连接 MetaMask
+                        Mask1
                     </button>
                 ) : !isAuthenticated ? (
                     <div className="space-y-4">

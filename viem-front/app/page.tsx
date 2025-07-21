@@ -6,7 +6,7 @@ import { foundry } from 'viem/chains';
 import Counter_ABI from './contracts/Counter.json';
 
 // Counter 合约地址
-const COUNTER_ADDRESS = "0x7148E9A2d539A99a66f1bd591E4E20cA35a08eD5";
+const COUNTER_ADDRESS = "0x959922bE3CAee4b8Cd9a407cc3ac1C251C2007B1";
 
 export default function Home() {
   const [balance, setBalance] = useState<string>('0');
@@ -30,7 +30,10 @@ export default function Home() {
     try {
       const [address] = await window.ethereum.request({ method: 'eth_requestAccounts' });
       const chainId = await window.ethereum.request({ method: 'eth_chainId' });
-      
+      console.log('address',address)
+      window.ethereum.request({ method: 'eth_requestAccounts' }).then((res)=>{
+        console.log('window.ethereum - res',res)
+      })
       setAddress(address as `0x${string}`);
       setChainId(Number(chainId));
       setIsConnected(true);
@@ -135,7 +138,7 @@ export default function Home() {
             onClick={connectWallet}
             className="w-full bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 transition-colors"
           >
-            连接 MetaMask
+            连接 MetaMask 1
           </button>
         ) : (
           <div className="space-y-4">
