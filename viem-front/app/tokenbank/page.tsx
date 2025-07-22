@@ -118,31 +118,44 @@ export default function TokenBankPage() {
 
     try {
       const [tokenBal, depositBal, allowanceAmount] = await Promise.all([
+        // 读取 ERC20 代币余额
         publicClient.readContract({
           address: ERC20_TOKEN_ADDRESS,
+          abi: [
+            {
+              "constant": true,
+              "inputs": [{"name": "_owner", "type": "address"}],
+              "name": "balanceOf",
+              "outputs": [{"name": "", "type": "uint256"}],
+              "payable": false,
+              "stateMutability": "view",
+              "type": "function"
+            }
+          ],
+          functionName: 'balanceOf',
+          args: [address],
+        }),
+        // 读取 TokenBank 中的存款余额
+        publicClient.readContract({
+          address: TOKEN_BANK_ADDRESS,
           abi: TokenBankABI,
           functionName: 'balances',
           args: [address],
         }),
-        // publicClient.readContract({
-        //   address: TOKEN_BANK_ADDRESS,
-        //   abi: TokenBankABI,
-        //   functionName: 'deposit',
-        //   args: [address],
-        // }),
-        // publicClient.readContract({
-        //   address: ERC20_TOKEN_ADDRESS,
-        //   abi: ERC20_ABI,
-        //   functionName: 'allowance',
-        //   args: [address, TOKEN_BANK_ADDRESS],
-        // })
+        // 读取授权额度
+        publicClient.readContract({
+          address: ERC20_TOKEN_ADDRESS,
+          abi: ERC20_ABI,
+          functionName: 'allowance',
+          args: [address, TOKEN_BANK_ADDRESS],
+        })
       ]);
-      console.log('tokenBal',tokenBal)
-      console.log('depositBal',depositBal)
-      console.log('allowanceAmount',allowanceAmount)
+      console.log('tokenBal', tokenBal);
+      console.log('depositBal', depositBal);
+      console.log('allowanceAmount', allowanceAmount);
       setTokenBalance(tokenBal as bigint);
-      // setDepositBalance(depositBal as bigint);
-      // setAllowance(allowanceAmount as bigint);
+      setDepositBalance(depositBal as bigint);
+      setAllowance(allowanceAmount as bigint);
     } catch (error) {
       console.error('读取余额错误:', error);
       setError('读取余额失败');
@@ -272,18 +285,18 @@ console.log('hash',hash)
                 disabled={isLoading || !amount}
                 className="flex-1 bg-yellow-500 text-white p-2 rounded hover:bg-yellow-600 disabled:bg-gray-400"
               >
-                {isLoading ? '授权中...' : '授权111'}
+                {isLoading ? '授权中...' : '授权'}
               </button>
               <button
                 onClick={handleDeposit}
-                disabled={isLoading || !amount || parseEther(amount) > allowance}
+                disabled={isLoading }
                 className="flex-1 bg-blue-500 text-white p-2 rounded hover:bg-blue-600 disabled:bg-gray-400"
               >
-                {isLoading ? '存款中...' : '存款111'}
+                {isLoading ? '存款中...' : '存款'}
               </button>
               <button
                 onClick={handleWithdraw}
-                disabled={isLoading || !amount}
+                disabled={isLoading || !amount || parseEther(amount) > depositBalance}
                 className="flex-1 bg-green-500 text-white p-2 rounded hover:bg-green-600 disabled:bg-gray-400"
               >
                 {isLoading ? '取款中...' : '取款'}
