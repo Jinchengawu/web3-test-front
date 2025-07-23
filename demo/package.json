@@ -4,6 +4,7 @@
   "type": "module",
   "main": "index.js",
   "scripts": {
+    "viem2Eth-transfer": "tsc && node dist/viem2Eth-transfer.js",
     "index": "tsc && node dist/index.js",
     "weth": "tsc && node dist/weth.js",
     "watchTransfer": "tsc && node dist/watchTransfer.js",
@@ -24,7 +25,8 @@
   "dependencies": {
     "@ethersproject/wallet": "^5.8.0",
     "@types/node": "^22.10.1",
-    "dotenv": "^16.5.0",
+    "axios": "^1.11.0",
+    "dotenv": "^16.6.1",
     "shamirs-secret-sharing": "^2.0.0",
     "typescript": "^5.7.2",
     "viem": "^2.30.6"
