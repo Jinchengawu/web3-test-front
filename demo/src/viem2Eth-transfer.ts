@@ -2,7 +2,7 @@
  * @Author: dreamworks.cnn@gmail.com
  * @Date: 2025-07-23 15:08:32
  * @LastEditors: dreamworks.cnn@gmail.com
- * @LastEditTime: 2025-07-23 17:39:34
+ * @LastEditTime: 2025-07-23 17:57:11
  * @FilePath: /web3-test-front/demo/src/viem2Eth-transfer.ts
  * @Description: 
  * 
@@ -182,22 +182,6 @@ async function getNonce(address: Address) {
   console.log('getNonce',data)
   return Promise.resolve(nonce)
 }
-
-function getGasPrice() {
-
-}
-
-function createTransaction(transaction: Transaction) {
-  const _transaction = {
-    ...transaction,
-    data:'0xa9059cbb000000000000000000000000123456789012345678901234567890123456789000000000000000000000000000000000000000000000000000000000000f4240'
-  }
-  return transaction
-}
-// $ cast calldata "transfer(address,uint256)" 0x1234567890123456789012345678901234567890 1000000
-
-// 0xa9059cbb000000000000000000000000123456789012345678901234567890123456789000000000000000000000000000000000000000000000000000000000000f4240
-
 async function sendTransaction(transaction: Transaction) {
   const data = axios.post(RPC_URL, transaction)
   console.log('sendTransaction',data)
