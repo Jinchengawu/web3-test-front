@@ -1,3 +1,13 @@
+/*
+ * @Author: dreamworks.cnn@gmail.com
+ * @Date: 2025-07-24 15:25:56
+ * @LastEditors: dreamworks.cnn@gmail.com
+ * @LastEditTime: 2025-07-24 15:50:53
+ * @FilePath: /web3-test-front/viem-front/app/NFTMarket/components/ConnectionStatus.tsx
+ * @Description: 
+ * 
+ * Copyright (c) 2025 by ${git_name_email}, All Rights Reserved. 
+ */
 'use client';
 
 import { useAppKitNetwork } from '@reown/appkit/react';

@@ -12,7 +12,7 @@
  * 
  */
 import { useState, useEffect } from 'react';
-import { useAppKitAccount, useAppKitNetwork, useDisconnect } from '@reown/appkit/react';
+import { useAccount, useChainId, useDisconnect } from 'wagmi';
 import { useReadContract, useWriteContract } from 'wagmi';
 import { 
   parseEther, 
@@ -41,8 +41,8 @@ interface NFTListing {
 }
 
 export default function NFTMarketPage() {
-  const { address, isConnected } = useAppKitAccount();
-  const { chainId } = useAppKitNetwork();
+  const { address, isConnected } = useAccount();
+  const chainId = useChainId();
   const { disconnect } = useDisconnect();
   const { writeContract, isPending } = useWriteContract();
 

@@ -16,6 +16,9 @@ import { createAppKit } from '@reown/appkit/react';
 import { WagmiAdapter } from '@reown/appkit-adapter-wagmi';
 import { createConfig, http, WagmiProvider } from 'wagmi';
 import { foundry } from 'wagmi/chains';
+import { RainbowKitProvider, getDefaultWallets } from '@rainbow-me/rainbowkit';
+import '@rainbow-me/rainbowkit/styles.css';
+import { rainbowKitConfig } from './config/rainbowkit';
 
 const config = createConfig({
   chains: [foundry],
@@ -49,13 +52,24 @@ createAppKit({
   }
 });
 
+// 配置 RainbowKit
+const { wallets } = getDefaultWallets({
+  appName: 'NFT Market',
+  projectId: 'YOUR_PROJECT_ID', // 请替换为你的 WalletConnect Project ID
+});
+
 const queryClient = new QueryClient();
 
 export function Providers({ children }: { children: ReactNode }) {
   return (
     <WagmiProvider config={config}>
       <QueryClientProvider client={queryClient}>
-        {children}
+        <RainbowKitProvider
+          coolMode={rainbowKitConfig.coolMode}
+          showRecentTransactions={rainbowKitConfig.showRecentTransactions}
+        >
+          {children}
+        </RainbowKitProvider>
       </QueryClientProvider>
     </WagmiProvider>
   );

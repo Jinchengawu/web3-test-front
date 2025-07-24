@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { useAppKitAccount, useAppKitNetwork, useDisconnect } from '@reown/appkit/react';
+import { useAccount, useChainId, useDisconnect } from 'wagmi';
 import { foundry } from 'wagmi/chains';
 
 interface UserProfileProps {
@@ -9,8 +9,8 @@ interface UserProfileProps {
 }
 
 export default function UserProfile({ onDisconnect }: UserProfileProps) {
-  const { address, isConnected } = useAppKitAccount();
-  const { chainId } = useAppKitNetwork();
+  const { address, isConnected } = useAccount();
+  const chainId = useChainId();
   const { disconnect } = useDisconnect();
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
