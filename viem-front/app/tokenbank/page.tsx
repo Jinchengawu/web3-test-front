@@ -11,7 +11,7 @@ import {
   type Hash,
   custom
 } from 'viem';
-import { foundry } from 'viem/chains';
+import { sepolia } from 'viem/chains';
 import TokenBankABI from '../contracts/TokenBank.json';
 
 // ERC20 标准 ABI
@@ -64,8 +64,8 @@ const ERC20_ABI = [
   }
 ] as const;
 
-const TOKEN_BANK_ADDRESS = '0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512' as Address;
-const ERC20_TOKEN_ADDRESS = '0x5FbDB2315678afecb367f032d93F642f64180aa3' as Address;
+const TOKEN_BANK_ADDRESS = '0xe836B76454420F92b2E12B8b5F55cf78cf61b97d' as Address;
+const ERC20_TOKEN_ADDRESS = '0xEaF42Bda0E77dD8c14f708d78f032f6a9101A494' as Address;
 
 export default function TokenBankPage() {
   const [address, setAddress] = useState<Address | null>(null);
@@ -78,7 +78,7 @@ export default function TokenBankPage() {
 
   // 创建公共客户端
   const publicClient = createPublicClient({
-    chain: foundry,
+    chain: sepolia,
     transport: http()
   });
 
@@ -88,7 +88,7 @@ export default function TokenBankPage() {
   useEffect(() => {
     if (typeof window !== 'undefined' && window.ethereum) {
       const client = createWalletClient({
-        chain: foundry,
+        chain: sepolia,
         transport: custom(window.ethereum)
       });
       setWalletClient(client);
@@ -271,6 +271,7 @@ console.log('hash',hash)
 
         <div className="bg-white p-6 rounded-lg shadow-md">
           <h2 className="text-xl font-semibold mb-4">操作</h2>
+          <h3>{address}</h3>
           <div className="space-y-4">
             <input
               type="number"
