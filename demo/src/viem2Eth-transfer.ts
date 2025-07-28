@@ -2,7 +2,7 @@
  * @Author: dreamworks.cnn@gmail.com
  * @Date: 2025-07-23 15:08:32
  * @LastEditors: dreamworks.cnn@gmail.com
- * @LastEditTime: 2025-07-23 17:57:11
+ * @LastEditTime: 2025-07-27 22:33:11
  * @FilePath: /web3-test-front/demo/src/viem2Eth-transfer.ts
  * @Description: 
  * 
@@ -72,6 +72,8 @@ class Wallet {
     // 从私钥生成账户
     this.account = privateKeyToAccount(this.privateKey as `0x${string}`)
     this.address = this.account.address
+    console.log('Wallet:this.address',this.address)
+    console.log('Wallet:this.privateKey',this.privateKey)
   }
 
   // 生成新的钱包

@@ -2,8 +2,9 @@ import { createPublicClient, http, parseAbiItem, type Address } from 'viem';
 import { foundry } from 'wagmi/chains';
 import { CONTRACT_ADDRESSES } from '../config/contracts';
 
+// https://sepolia.etherscan.io/address/0x4c375836912a872989f504c81b90d14272d249ba#writeContract
 // 使用配置文件中的合约地址
-const NFT_MARKET_ADDRESS = CONTRACT_ADDRESSES.NFT_MARKET;
+const NFT_MARKET_ADDRESS =  "0x4c375836912a872989f504c81b90d14272d249ba" // CONTRACT_ADDRESSES.NFT_MARKET;
 
 // 创建公共客户端
 const publicClient = createPublicClient({
