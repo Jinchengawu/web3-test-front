@@ -2,13 +2,13 @@
  * @Author: dreamworks.cnn@gmail.com
  * @Date: 2025-07-28 15:50:31
  * @LastEditors: dreamworks.cnn@gmail.com
- * @LastEditTime: 2025-07-28 16:43:42
+ * @LastEditTime: 2025-07-31 14:38:31
  * @FilePath: /web3-test-front/demo/src/work/W4-D1-ScanBlock.ts
  * @Description: 
  * 
  * Copyright (c) 2025 by ${git_name_email}, All Rights Reserved. 
  */
-import { publicClient } from './client.js'
+import { publicClient } from './public-client.js'
 import { parseAbiItem } from 'viem'
 
 

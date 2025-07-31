@@ -17,6 +17,9 @@ dependencies:
   dotenv:
     specifier: ^16.6.1
     version: 16.6.1
+  merkletreejs:
+    specifier: ^0.5.2
+    version: 0.5.2
   shamirs-secret-sharing:
     specifier: ^2.0.0
     version: 2.0.1
@@ -354,6 +357,10 @@ packages:
       function-bind: 1.1.2
     dev: false
 
+  /crypto-js@4.2.0:
+    resolution: {integrity: sha512-KALDyEYgpY+Rlob/iriUtjV6d5Eq+Y191A5g4UqLAi8CyGP9N1+FdVbkc1SxKc2r4YAYqG8JzO2KGL+AizD70Q==}
+    dev: false
+
   /dotenv@16.6.1:
     resolution: {integrity: sha512-uBq4egWHTcTt33a72vpSG0z3HnPuIl6NqYcTrKEg2azoEyl2hpW0zqlxysq2pK9HlDIHyHyakeYaYnSAwd8bow==}
     engines: {node: '>=12'}
@@ -497,6 +504,15 @@ packages:
     engines: {node: '>= 0.4'}
     dev: false
 
+  /merkletreejs@0.5.2:
+    resolution: {integrity: sha512-MHqclSWRSQQbYciUMALC3PZmE23NPf5IIYo+Z7qAz5jVcqgCB95L1T9jGcr+FtOj2Pa2/X26uG2Xzxs7FJccUg==}
+    engines: {node: '>= 7.6.0'}
+    dependencies:
+      buffer-reverse: r2.cnpmjs.org/buffer-reverse@1.0.1
+      crypto-js: 4.2.0
+      treeify: r2.cnpmjs.org/treeify@1.1.0
+    dev: false
+
   /mime-db@1.52.0:
     resolution: {integrity: sha512-sPU4uV7dYlvtWJxwwxHD0PuihVNiE7TyAbQ5SWxDCB9mUYvOgroQOwYQQOKPJ8CIbE+1ETVlOoK1UC2nU3gYvg==}
     engines: {node: '>= 0.6'}
@@ -598,6 +614,12 @@ packages:
     version: 1.1.0
     dev: false
 
+  r2.cnpmjs.org/buffer-reverse@1.0.1:
+    resolution: {integrity: sha512-M87YIUBsZ6N924W57vDwT/aOu8hw7ZgdByz6ijksLjmHJELBASmYTTlNHRgjE+pTsT9oJXGaDSgqqwfdHotDUg==, registry: https://r.cnpmjs.org/, tarball: https://r2.cnpmjs.org/buffer-reverse/-/buffer-reverse-1.0.1.tgz}
+    name: buffer-reverse
+    version: 1.0.1
+    dev: false
+
   r2.cnpmjs.org/combined-stream@1.0.8:
     resolution: {integrity: sha512-FQN4MRfuJeHf7cBbBMJFXhKSDq+2kAArBlmRBvcvFE5BB1HZKXtSFASDhdlz9zOYwxh8lDdnvmMOe/+5cdoEdg==, registry: https://r.cnpmjs.org/, tarball: https://r2.cnpmjs.org/combined-stream/-/combined-stream-1.0.8.tgz}
     name: combined-stream
@@ -667,4 +689,11 @@ packages:
     resolution: {integrity: sha512-cdwTTnqPu0Hyvf5in5asVdZocVDTNRmR7XEcJuIzMjJeSHybHl7vpB66AzwTaIg6CLSbtjcxc8fqcySfnTkccA==, registry: https://r.cnpmjs.org/, tarball: https://r2.cnpmjs.org/scrypt-js/-/scrypt-js-3.0.1.tgz}
     name: scrypt-js
     version: 3.0.1
+    dev: false
+
+  r2.cnpmjs.org/treeify@1.1.0:
+    resolution: {integrity: sha512-1m4RA7xVAJrSGrrXGs0L3YTwyvBs2S8PbRHaLZAkFw7JR8oIFwYtysxlBZhYIa7xSyiYJKZ3iGrrk55cGA3i9A==, registry: https://r.cnpmjs.org/, tarball: https://r2.cnpmjs.org/treeify/-/treeify-1.1.0.tgz}
+    name: treeify
+    version: 1.1.0
+    engines: {node: '>=0.6'}
     dev: false
