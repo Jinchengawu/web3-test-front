@@ -2,7 +2,7 @@
  * @Author: dreamworks.cnn@gmail.com
  * @Date: 2025-07-31 14:26:33
  * @LastEditors: dreamworks.cnn@gmail.com
- * @LastEditTime: 2025-07-31 15:20:27
+ * @LastEditTime: 2025-08-01 00:55:22
  * @FilePath: /web3-test-front/demo/src/work/W4-D4-AirdopMerkleNFTMarket.ts
  * @Description: 
  * 
@@ -30,9 +30,9 @@ const users = [
 
 // 合约地址配置
 const CONTRACT_ADDRESSES = {
-  AIRDROP_MERKLE_NFT_MARKET: "0x...", // 替换为实际的合约地址
-  TOKEN: "0x...", // 替换为实际的 Token 合约地址
-  NFT: "0x...", // 替换为实际的 NFT 合约地址
+  AIRDROP_MERKLE_NFT_MARKET: "0xb628A80c04e7DDbe9fA39AbF9121767C24B8b0Da", // 替换为实际的合约地址
+  TOKEN: "0x28E9F6eF779E601E5be0dc26e806DF4694CD41C1", // 替换为实际的 Token 合约地址
+  NFT: "0x862E676F73C20e3fb374B06a76b2d5DE3F8317b7", // 替换为实际的 NFT 合约地址
 }
 
 // 测试用的 listingId
